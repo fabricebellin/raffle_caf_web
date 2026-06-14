@@ -69,3 +69,18 @@ textarea { width: 100%; height: 200px; margin-top: 20px; padding: 15px; border: 
 
 .drumstick { font-size: 2rem; animation: drumRoll 0.2s infinite alternate; }
 @keyframes drumRoll { 0% { transform: rotate(-20deg); } 100% { transform: rotate(20deg); } }
+
+/* Adaptation du bouton pour iPhone */
+@media (max-width: 600px) {
+    .fullscreen-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        margin-left: 5px;
+    }
+    .header {
+        padding: 10px; /* Réduit le padding du header sur mobile */
+    }
+    .logo-caf {
+        height: 60px; /* Réduit la taille du logo sur mobile */
+    }
+}
