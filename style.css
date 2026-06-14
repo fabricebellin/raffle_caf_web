@@ -1,0 +1,71 @@
+/* --- BASE & GÉNÉRAL --- */
+html { font-size: 16px; height: 100%; }
+body { 
+    margin: 0; 
+    font-family: 'Roboto', sans-serif; /* Rétabli en Roboto */
+    background: linear-gradient(rgba(245, 247, 250, 0.9), rgba(245, 247, 250, 0.9)), url('IMG VILLE MTB.jpg') no-repeat center center; 
+    background-size: cover; 
+    background-attachment: fixed; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+/* --- HEADER --- */
+.header { 
+    background: #ffffff; 
+    color: #0A4DA2; 
+    padding: 20px 40px; 
+    width: 100%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    position: relative; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    min-height: 120px;
+}
+.logo-caf { height: 100px; margin-right: 20px; }
+h1 { margin: 0; font-size: 1.8rem; font-weight: 700; }
+
+.fullscreen-btn { 
+    position: absolute; 
+    right: 30px; 
+    background-color: #0A4DA2; 
+    color: white; 
+    border: none; 
+    padding: 12px 24px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    transition: all 0.3s ease; 
+}
+.fullscreen-btn:hover { background-color: #083b7d; transform: translateY(-2px); }
+
+/* --- CONTENEUR --- */
+.container { width: 90%; max-width: 600px; margin-top: 40px; }
+.controls { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    background: white; 
+    padding: 30px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+    border: 1px solid #eee;
+}
+
+input { padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; }
+button { padding: 15px; background: #0A4DA2; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1rem; }
+
+textarea { width: 100%; height: 200px; margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+.hidden { display: none !important; }
+
+/* --- TICKET --- */
+.ticket-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.ticket { background: white; padding: 50px; border-radius: 20px; text-align: center; border: 8px dashed #0A4DA2; width: 80%; max-width: 700px; min-height: 300px; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+.ticket-header { font-size: 1.5rem; font-weight: bold; color: #0A4DA2; margin-bottom: 20px; }
+#ticket-winner { font-size: 2.5rem; color: #FF4500; font-weight: bold; margin: 20px 0; }
+
+.drumstick { font-size: 2rem; animation: drumRoll 0.2s infinite alternate; }
+@keyframes drumRoll { 0% { transform: rotate(-20deg); } 100% { transform: rotate(20deg); } }

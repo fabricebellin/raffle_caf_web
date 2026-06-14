@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="audio-tambour" src="Drum Roll Roulement de Tambour Free Sound Effects.mp3" preload="auto"></audio>
+
+    <header class="header">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        
+        <nav id="burger-menu" class="burger-menu">
+    <a href="index.html">Accueil</a>
+    <a href="tirage.html">Tirage au sort</a>
+    <a href="resultats.html">Résultats</a>
+</nav>
+
+        <div class="header-center">
+            <a href="index.html"><img src="logo_caf-removebg-preview.png" class="logo-caf"></a>
+            <h1>Tirage au sort</h1>
+        </div>
+        
+        <button onclick="toggleFullScreen()" class="fullscreen-btn">Plein écran</button>
+    </header>
+
+    <main class="container">
+        <div id="ticket-container" class="ticket-overlay hidden">
+            <div class="ticket">
+                <div class="winner-zone">
+                    <span id="left-stick" class="drumstick hidden">🥢</span>
+                    <div id="ticket-winner" style="font-size:2.5rem; color:#FF4500; font-weight:bold; margin:20px 0;">🥁</div>
+                    <span id="right-stick" class="drumstick hidden">🥢</span>
+                </div>
+                <div id="ticket-title" style="font-weight:bold;">SÉLECTION EN COURS...</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <label>Nombre total de participants :</label>
+            <input type="number" id="total-participants" value="1">
+            <label>Nombre de Clio :</label>
+            <input type="number" id="cars" value="1">
+            <button onclick="draw()">Tirer au sort</button>
+            <button onclick="toggleListe()">Masquer/Afficher la liste</button>
+        </div>
+        <textarea id="input" class="hidden"></textarea>
+        <pre id="result"></pre>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

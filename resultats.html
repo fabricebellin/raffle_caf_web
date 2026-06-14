@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <nav id="burger-menu" class="burger-menu">
+            <a href="index.html">Accueil</a>
+            <a href="tirage.html">Tirage au sort</a>
+            <a href="resultats.html">Résultats</a>
+        </nav>
+        <div class="header-center">
+            <a href="index.html"><img src="logo_caf-removebg-preview.png" class="logo-caf"></a>
+            <h1>Derniers Gagnants</h1>
+        </div>
+        <div class="header-right"></div>
+    </header>
+
+    <div class="results-display" id="big-result-container">Chargement...</div>
+    <script src="app.js"></script>
+</body>
+</html>
