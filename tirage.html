@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <title>Tirage au sort CAF</title>
 </head>
 <body>
     <audio id="audio-tambour" src="Drum Roll Roulement de Tambour Free Sound Effects.mp3" preload="auto"></audio>
@@ -11,10 +12,10 @@
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
         
         <nav id="burger-menu" class="burger-menu">
-    <a href="index.html">Accueil</a>
-    <a href="tirage.html">Tirage au sort</a>
-    <a href="resultats.html">Résultats</a>
-</nav>
+            <a href="index.html">Accueil</a>
+            <a href="tirage.html">Tirage au sort</a>
+            <a href="resultats.html">Résultats</a>
+        </nav>
 
         <div class="header-center">
             <a href="index.html"><img src="logo_caf-removebg-preview.png" class="logo-caf"></a>
@@ -37,10 +38,12 @@
         </div>
 
         <div class="controls">
-            <label>Nombre total de participants :</label>
-            <input type="number" id="total-participants" value="1">
-            <label>Nombre de Clio :</label>
-            <input type="number" id="cars" value="1">
+            <label for="total-participants">Nombre total de participants :</label>
+            <input type="number" id="total-participants" value="1" min="1" step="1" required>
+            
+            <label for="cars">Nombre de Clio :</label>
+            <input type="number" id="cars" value="1" min="1" step="1" required>
+            
             <button onclick="draw()">Tirer au sort</button>
             <button onclick="toggleListe()">Masquer/Afficher la liste</button>
         </div>
