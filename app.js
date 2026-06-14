@@ -1,50 +1,38 @@
-function initAutoUpdate() {
-    const inputField = document.getElementById("total-participants");
-    inputField.addEventListener("input", genererParticipants);
-    genererParticipants(); 
-}
-window.onload = initAutoUpdate;
-
-function genererParticipants() {
-    let n = parseInt(document.getElementById("total-participants").value);
-    if (isNaN(n) || n < 1) return;
-    let liste = "";
-    for (let i = 1; i <= n; i++) { liste += "Participant " + i + "\n"; }
-    document.getElementById("input").value = liste.trim();
-}
-
-function toggleListe() { document.getElementById("input").classList.toggle("hidden"); }
-
-function toggleFullScreen() {
-    if (!document.fullscreenElement) { document.documentElement.requestFullscreen(); }
-    else { document.exitFullscreen(); }
-}
-
-function parseParticipants(text) { return text.split("\n").map(x => x.trim()).filter(x => x !== ""); }
-
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
 function draw() {
+    // 1. Récupération et validation stricte des entrées
+    const participantsInput = document.getElementById("total-participants").value;
+    const carsInput = document.getElementById("cars").value;
+
+    const totalParticipants = parseInt(participantsInput);
+    const cars = parseInt(carsInput);
+
+    // Vérification : entiers positifs uniquement
+    if (!Number.isInteger(Number(participantsInput)) || totalParticipants <= 0 ||
+        !Number.isInteger(Number(carsInput)) || cars <= 0) {
+        alert("Erreur : Veuillez saisir uniquement des nombres entiers positifs pour les participants et les Clio.");
+        return; 
+    }
+
+    // 2. Initialisation de l'interface
     document.getElementById("ticket-title").textContent = "SÉLECTION EN COURS...";
     document.getElementById("ticket-winner").innerHTML = "🥁";
     document.getElementById("result").textContent = "";
 
     let participants = parseParticipants(document.getElementById("input").value);
-    let count = parseInt(document.getElementById("cars").value);
 
-    if (participants.length < count) { alert("Pas assez de participants !"); return; }
+    // 3. Vérification du nombre de participants
+    if (participants.length < cars) { 
+        alert("Pas assez de participants pour le nombre de Clio défini !"); 
+        return; 
+    }
 
+    // 4. Tirage au sort
     shuffle(participants);
-    let winners = participants.slice(0, count);
+    let winners = participants.slice(0, cars);
     
     let result = "TIRAGE AU SORT CAF - CLIO\n\n";
     let ticketList = "";
-    // MODIFICATION ICI : On s'assure que le numéro (i+1) est bien présent
+    
     winners.forEach((w, i) => { 
         result += `${i+1}. ${w}\n`; 
         ticketList += `<div style="margin: 10px 0;"><strong>${i+1}.</strong> ${w}</div>`; 
@@ -57,6 +45,7 @@ function draw() {
     let audio = document.getElementById("audio-tambour");
     audio.load(); audio.play();
 
+    // 5. Affichage des résultats après l'animation
     setTimeout(() => {
         document.getElementById("ticket-title").textContent = "🏆 GAGNANT(S) 🏆";
         document.getElementById("ticket-winner").innerHTML = ticketList;
@@ -74,13 +63,4 @@ function draw() {
         sauvegarderResultatTexte(result);
         setTimeout(() => document.getElementById("ticket-container").classList.add("hidden"), 6000);
     }, 5000);
-}
-
-function sauvegarderResultatTexte(texte) {
-    const m = new Date();
-    const nom = `Tirage_${m.getDate()}-${m.getMonth()+1}-${m.getFullYear()}_${m.getHours()}h${m.getMinutes()}.txt`;
-    const blob = new Blob([texte], { type: "text/plain" });
-    const lien = document.createElement("a");
-    lien.href = URL.createObjectURL(blob);
-    lien.download = nom; lien.click();
 }
